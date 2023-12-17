@@ -4,7 +4,7 @@
         {
             "name": "nodejs",
             "image": "846412515596.dkr.ecr.ap-southeast-2.amazonaws.com/nodejs",
-            "cpu": 0,
+            "cpu": 1,
             "portMappings": [
                 {
                     "name": "nodejs-3000-tcp",
