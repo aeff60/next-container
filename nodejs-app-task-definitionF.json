@@ -1,10 +1,12 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:ap-southeast-2:846412515596:task-definition/nodejs-app-task-definitionF:1",
+    "taskDefinitionArn": "arn:aws:ecs:ap-southeast-2:846412515596:task-definition/next-con:1",
     "containerDefinitions": [
         {
             "name": "nodejs",
             "image": "846412515596.dkr.ecr.ap-southeast-2.amazonaws.com/nodejs",
-            "cpu": 1,
+            "cpu": 2048,
+            "memory": 6144,
+            "memoryReservation": 3072,
             "portMappings": [
                 {
                     "name": "nodejs-3000-tcp",
@@ -24,15 +26,21 @@
                 "logDriver": "awslogs",
                 "options": {
                     "awslogs-create-group": "true",
-                    "awslogs-group": "/ecs/nodejs-app-task-definitionF",
+                    "awslogs-group": "/ecs/next-con",
                     "awslogs-region": "ap-southeast-2",
                     "awslogs-stream-prefix": "ecs"
                 },
                 "secretOptions": []
-            }
+            },
+            "resourceRequirements": [
+                {
+                    "value": "1",
+                    "type": "GPU"
+                }
+            ]
         }
     ],
-    "family": "nodejs-app-task-definitionF",
+    "family": "next-con",
     "taskRoleArn": "arn:aws:iam::846412515596:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::846412515596:role/ecsTaskExecutionRole",
     "revision": 1,
@@ -50,6 +58,9 @@
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
         },
         {
             "name": "com.amazonaws.ecs.capability.task-iam-role"
@@ -71,13 +82,13 @@
     "requiresCompatibilities": [
         "EC2"
     ],
-    "cpu": "1024",
-    "memory": "3072",
+    "cpu": "2048",
+    "memory": "6144",
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2023-12-17T10:27:58.286Z",
+    "registeredAt": "2023-12-17T18:40:39.871Z",
     "registeredBy": "arn:aws:iam::846412515596:root",
     "tags": []
 }
